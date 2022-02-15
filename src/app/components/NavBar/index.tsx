@@ -2,16 +2,16 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { Logo } from './Logo';
 import { StyleConstants } from 'styles/StyleConstants';
-import { Nav } from './Nav';
-import { PageWrapper } from '../PageWrapper';
+// import { Nav } from './Nav';
+import { WrapperPage } from '../Wrappers';
 
 export function NavBar() {
   return (
     <Wrapper>
-      <PageWrapper>
+      <WrapperPage>
         <Logo />
-        <Nav />
-      </PageWrapper>
+        {/* <Nav /> */}
+      </WrapperPage>
     </Wrapper>
   );
 }
@@ -35,7 +35,7 @@ const Wrapper = styled.header`
       )};
   }
 
-  ${PageWrapper} {
+  ${WrapperPage} {
     display: flex;
     align-items: center;
     justify-content: space-between;
