@@ -1,9 +1,6 @@
-import React, { useContext, useState, useRef } from 'react';
-import styled from 'styled-components/macro';
+import { useState } from 'react';
 import AwesomeSlider from 'react-awesome-slider';
 import {
-  Provider,
-  Link,
   withNavigationContext,
   withNavigationHandlers,
 } from 'react-awesome-slider/dist/navigation';
@@ -50,8 +47,6 @@ const ArtSlider = () => {
 };
 
 export default withNavigationContext(({ fullpage }) => {
-  const isFirstLoad = useRef(true);
-  const animation = fullpage.navigation.animation || `foldOutAnimation`;
   const [anim, setAnim] = useState(`foldOutAnimation`);
 
   const anims = [

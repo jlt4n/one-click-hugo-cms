@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { NavBar } from 'app/components/NavBar';
 import ShowcaseArt from './ShowcaseArt';
-import { Features } from './Features';
 import Nav from '../../components/NavBar/Nav';
 import { WrapperPage, WrapperContent, Flex } from 'app/components/Wrappers';
 
