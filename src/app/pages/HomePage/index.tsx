@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { NavBar } from 'app/components/NavBar';
-import { Masthead } from './Masthead';
-import { Features } from './Features';
-import { PageWrapper } from 'app/components/PageWrapper';
+import ShowcaseArt from './ShowcaseArt';
+import Nav from '../../components/NavBar/Nav';
+import { WrapperPage, WrapperContent, Flex } from 'app/components/Wrappers';
 
 export function HomePage() {
   return (
@@ -15,11 +14,15 @@ export function HomePage() {
           content="A React Boilerplate application homepage"
         />
       </Helmet>
-      <NavBar />
-      <PageWrapper>
-        <Masthead />
-        <Features />
-      </PageWrapper>
+      {/* <NavBar /> */}
+      <WrapperPage>
+        <Flex>
+          <WrapperContent>
+            <ShowcaseArt />
+          </WrapperContent>
+          <Nav />
+        </Flex>
+      </WrapperPage>
     </>
   );
 }
