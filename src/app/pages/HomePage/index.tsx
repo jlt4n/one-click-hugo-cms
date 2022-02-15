@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { NavBar } from 'app/components/NavBar';
 import ShowcaseArt from './ShowcaseArt';
 import { Features } from './Features';
+import Nav from '../../components/NavBar/Nav';
 import { WrapperPage, WrapperContent, Flex } from 'app/components/Wrappers';
 
 export function HomePage() {
@@ -17,11 +18,12 @@ export function HomePage() {
       </Helmet>
       {/* <NavBar /> */}
       <WrapperPage>
-        <WrapperContent>
-          <Flex>
+        <Flex>
+          <WrapperContent>
             <ShowcaseArt />
-          </Flex>
-        </WrapperContent>
+          </WrapperContent>
+          <Nav />
+        </Flex>
       </WrapperPage>
     </>
   );
