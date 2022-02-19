@@ -1,6 +1,4 @@
 import * as React from 'react';
-import styled from 'styled-components/macro';
-import { Flex, TextVertLR } from 'styles/global-styles';
 import { WrapperTxtScroller } from '../Wrappers';
 import Marquee from 'react-fast-marquee';
 
