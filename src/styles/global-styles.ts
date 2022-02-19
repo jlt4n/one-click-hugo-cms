@@ -1,5 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { StyleConstants } from './StyleConstants';
+// import { styled } from 'styled-components/macro';
 /* istanbul ignore next */
 export const GlobalStyle = createGlobalStyle`
   html,
@@ -33,4 +34,31 @@ export const GlobalStyle = createGlobalStyle`
     width: 1.5rem;
     height: 1.5rem;
   }
+`;
+
+export const Flex = styled.div`
+  display: flex;
+`;
+
+export const Grid = styled.div`
+  display: grid;
+`;
+
+export const ShadowBox = styled.div`
+  -webkit-filter: drop-shadow(0.3rem 0 2px #0008);
+  filter: drop-shadow(0.3rem 0 2px #0008);
+  z-index: 1000;
+`;
+
+export const BGSlider = styled.div`
+  display: flex;
+  width: 100%;
+  height: 90vh;
+`;
+
+export const TextVertLR = styled.p`
+  text-orientation: mixed;
+  writing-mode: vertical-lr;
+  transform: rotate(-180deg);
+  text-transform: uppercase;
 `;

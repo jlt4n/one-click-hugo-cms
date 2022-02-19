@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import ShowcaseArt from './ShowcaseArt';
 import Nav from '../../components/NavBar/Nav';
-import { WrapperPage, WrapperContent, Flex } from 'app/components/Wrappers';
+import { WrapperPage, WrapperContent } from 'app/components/Wrappers';
+import * as Styles from '../../../styles/global-styles';
+import TextScroller from '../../components/TextScroller';
 
 export function HomePage() {
   return (
@@ -16,12 +18,19 @@ export function HomePage() {
       </Helmet>
       {/* <NavBar /> */}
       <WrapperPage>
-        <Flex>
+        <Styles.Flex>
+          <Styles.ShadowBox>
+            <Nav />
+          </Styles.ShadowBox>
+          <Styles.ShadowBox>
+            <TextScroller />
+          </Styles.ShadowBox>
           <WrapperContent>
-            <ShowcaseArt />
+            <Styles.BGSlider>
+              <ShowcaseArt />
+            </Styles.BGSlider>
           </WrapperContent>
-          <Nav />
-        </Flex>
+        </Styles.Flex>
       </WrapperPage>
     </>
   );

@@ -32,28 +32,33 @@ export default withNavigationContext(({ fullpage }) => {
   };
 
   return (
-    <NavigationSlider
-      className="awesome-slider"
-      play={true}
-      interval={3000}
-      buttons={false}
-      startupDelay={275}
-      animation={anim}
-      media={[
-        {
-          source: '/images/art/E_TCWCuVkAMuTza.jpg',
-        },
-        {
-          source: '/images/art/FD1O8JlUYAA2bMZ.jpg',
-        },
-        {
-          source: '/images/art/FEIV03UaUAAJqe4.jpg',
-        },
-        {
-          source: '/images/art/FF7II5JVQAM1ILt.jpg',
-        },
-      ]}
-      onTransitionEnd={() => RandAnims()}
-    />
+    <>
+      <NavigationSlider
+        className="awesome-slider"
+        play={true}
+        fillParent={true}
+        interval={3000}
+        buttons={false}
+        startupDelay={275}
+        animation={anim}
+        activityColor="blue"
+        style={{ padding: '0 0 0 10rem' }}
+        media={[
+          {
+            source: '/images/art/E_TCWCuVkAMuTza.jpg',
+          },
+          {
+            source: '/images/art/FD1O8JlUYAA2bMZ.jpg',
+          },
+          {
+            source: '/images/art/FEIV03UaUAAJqe4.jpg',
+          },
+          {
+            source: '/images/art/FF7II5JVQAM1ILt.jpg',
+          },
+        ]}
+        onTransitionEnd={() => RandAnims()}
+      />
+    </>
   );
 });

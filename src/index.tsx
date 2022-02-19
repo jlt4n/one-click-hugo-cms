@@ -7,7 +7,8 @@
 
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
-import './index.css';
+import './css/outdex.css';
+import './css/styleFX.css';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
