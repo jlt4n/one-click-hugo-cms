@@ -20,7 +20,6 @@ export const WrapperNav = styled.div`
   height: 100vh;
   background-color: white;
   min-width: 8rem;
-  display: grid;
 `;
 
 export const WrapperTxtScroller = styled.div`
@@ -28,8 +27,8 @@ export const WrapperTxtScroller = styled.div`
   padding: 0.3rem;
   height: 100vh;
   background-color: black;
-  min-width: 2rem;
-  max-width: 2rem;
+  min-width: 3rem;
+  max-width: 3rem;
+  font-size: 1.3rem;
   display: flex;
-  letter-spacing: 3px;
 `;

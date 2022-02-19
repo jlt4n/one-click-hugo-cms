@@ -22,9 +22,11 @@ export function HomePage() {
           <Styles.ShadowBox>
             <Nav />
           </Styles.ShadowBox>
-          <Styles.ShadowBox>
-            <TextScroller />
-          </Styles.ShadowBox>
+          <Styles.Flex>
+            <Styles.ShadowBox>
+              <TextScroller />
+            </Styles.ShadowBox>
+          </Styles.Flex>
           <WrapperContent>
             <Styles.BGSlider>
               <ShowcaseArt />
