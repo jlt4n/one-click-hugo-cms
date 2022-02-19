@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
     line-height: 1.5;
+    overflow: hidden;
+    background-color: #101010 !important;
   }
 
   body {

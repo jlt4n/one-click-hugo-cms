@@ -18,6 +18,13 @@ import { useTranslation } from 'react-i18next';
 
 export function App() {
   const { i18n } = useTranslation();
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      document.body.className = '';
+    }, 600);
+  }, []);
+
   return (
     <BrowserRouter>
       <Helmet

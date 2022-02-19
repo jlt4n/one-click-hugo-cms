@@ -15,15 +15,25 @@ export const WrapperContent = styled.div`
 `;
 
 export const WrapperNav = styled.div`
-  z-index: 100;
+  z-index: 1000;
   padding: 0.3rem;
   height: 100vh;
   background-color: white;
   min-width: 8rem;
 `;
 
+export const WrapperNavHid = styled.div`
+  position: absolute;
+  z-index: 998;
+  // background-color: #001803;
+  width: 20rem;
+  height: 100vh;
+  transform: translateX(-100%);
+  padding: 1rem 0.5rem 1rem 3rem;
+`;
+
 export const WrapperTxtScroller = styled.div`
-  z-index: 100;
+  z-index: 1000;
   padding: 0.3rem;
   height: 100vh;
   background-color: black;
@@ -31,4 +41,8 @@ export const WrapperTxtScroller = styled.div`
   max-width: 3rem;
   font-size: 1.3rem;
   display: flex;
+`;
+
+export const WrapperZNdx = styled.div`
+  z-index: 999;
 `;
