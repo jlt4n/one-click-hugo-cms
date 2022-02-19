@@ -1,12 +1,20 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import ShowcaseArt from './ShowcaseArt';
 import Nav from '../../components/NavBar/Nav';
-import { WrapperPage, WrapperContent } from 'app/components/Wrappers';
+import {
+  WrapperPage,
+  WrapperContent,
+  WrapperZNdx,
+} from 'app/components/Wrappers';
 import * as Styles from '../../../styles/global-styles';
 import TextScroller from '../../components/TextScroller';
+import { NavBtn } from '../../components/Buttons/Buttons';
+import NavHid from 'app/components/NavBar/NavHid';
 
 export function HomePage() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [navStat, setNavStat] = useState(false);
   return (
     <>
       <Helmet>
@@ -22,9 +30,21 @@ export function HomePage() {
           <Styles.ShadowBox>
             <Nav />
           </Styles.ShadowBox>
-          <Styles.ShadowBox>
-            <TextScroller />
-          </Styles.ShadowBox>
+          <Styles.Flex
+            id="opening"
+            className={isNavOpen ? 'navOpen' : 'navClose'}
+            onAnimationEnd={() => setNavStat(isNavOpen)}
+          >
+            <NavHid navStat={navStat} />
+            <Styles.ShadowBox>
+              <TextScroller />
+            </Styles.ShadowBox>
+            <WrapperZNdx>
+              <div onClick={() => setIsNavOpen(!isNavOpen)}>
+                <NavBtn />
+              </div>
+            </WrapperZNdx>
+          </Styles.Flex>
           <WrapperContent>
             <Styles.BGSlider>
               <ShowcaseArt />

@@ -42,7 +42,7 @@ export default withNavigationContext(({ fullpage }) => {
         startupDelay={275}
         animation={anim}
         activityColor="blue"
-        style={{ padding: '0 0 0 10rem' }}
+        style={{ padding: '0 0 0 11rem' }}
         media={[
           {
             source: '/images/art/E_TCWCuVkAMuTza.jpg',
