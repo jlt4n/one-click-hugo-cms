@@ -1,8 +1,11 @@
-import * as React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { WrapperNav } from '../Wrappers';
 import { SiTwitter, SiKofi, SiPixiv } from 'react-icons/si';
 import { Flex, Grid, TextVertLR } from 'styles/global-styles';
+import CryptoJS from 'crypto-js';
+import Modal from 'react-modal';
+import Dashboard from '../Dashboard';
 
 const FJustifyC = styled(Flex)`
   justify-content: center;
@@ -77,13 +80,94 @@ const TextNav = styled(TextVertLR)`
   padding: 0 0 0 0.5rem;
 `;
 
+const InputType = styled.input`
+  position: absolute;
+  z-index: 0;
+  top -100%;
+  left -100%;
+`;
+
+const customStyles = {
+  overlay: {
+    zIndex: 9998,
+    backgroundColor: '#484848a1',
+  },
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 9999,
+  },
+};
+
+const defaultText = process.env.REACT_APP_DEFAULT_TEXT;
+const sp = process.env.REACT_APP_SP;
+const pp = process.env.REACT_APP_PP;
+
+var iv = CryptoJS.enc.Utf8.parse(pp);
+var decr = CryptoJS.AES.decrypt(defaultText, sp, { iv: iv });
+decr = decr.toString(CryptoJS.enc.Utf8);
+
+console.log('decr: ', decr);
+
+Modal.setAppElement('#App');
+
 const Nav: React.FC = () => {
+  let subtitle;
+  const [isLogoPressed, setIsLogoPressed] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null!);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isLogoPressed) {
+      inputRef.current.blur();
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    }
+    if (!isLogoPressed) {
+      if (inputRef.current.value === decr) {
+        setIsModalOpen(true);
+        console.log('open dashboard');
+      }
+      inputRef.current.blur();
+      inputRef.current.value = '';
+    }
+  }, [isLogoPressed]);
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#484848e0';
+  }
+
+  function onCloseModal() {
+    console.log('On Close Modal');
+  }
+
   return (
     <>
-      <WrapperNav className="crt">
+      <Modal
+        isOpen={isModalOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={onCloseModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <button onClick={() => setIsModalOpen(false)}>Close</button>
+        <Dashboard />
+      </Modal>
+      <InputType ref={inputRef} type="text" />
+      <WrapperNav className="crt inset-shadow">
         <FJustifyC style={{ height: '100%' }}>
           <NavContent>
-            <div>Logo Here</div>
+            <div
+              onMouseDown={() => setIsLogoPressed(true)}
+              onMouseUp={() => setIsLogoPressed(false)}
+            >
+              Logo Here
+            </div>
             <FJustifyC style={{ alignItems: 'end', margin: '0 0 0.5rem 0' }}>
               <NavSocials>
                 <AnchorStyle

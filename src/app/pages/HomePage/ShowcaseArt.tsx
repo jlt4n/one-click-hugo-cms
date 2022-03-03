@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AwesomeSlider from 'react-awesome-slider';
 import {
   withNavigationContext,
@@ -17,6 +18,14 @@ const NavigationSlider = withAutoplay(withNavigationHandlers(AwesomeSlider));
 
 export default withNavigationContext(({ fullpage }) => {
   const [anim, setAnim] = useState(`foldOutAnimation`);
+  const [arts, setArts] = useState([]);
+  useEffect(() => {
+    const fetchArt = async () => {
+      const media = await axios.get('/media');
+      console.log(media);
+    };
+    fetchArt();
+  }, []);
 
   const anims = [
     'cubeAnimation',
@@ -42,19 +51,22 @@ export default withNavigationContext(({ fullpage }) => {
         startupDelay={275}
         animation={anim}
         activityColor="blue"
-        style={{ padding: '0 0 0 11rem' }}
+        style={{ padding: '0 0 0 8rem' }}
         media={[
           {
-            source: '/images/art/E_TCWCuVkAMuTza.jpg',
+            source: '/images/art/art_1.jpg',
           },
           {
-            source: '/images/art/FD1O8JlUYAA2bMZ.jpg',
+            source: '/images/art/art_2.jpg',
           },
           {
-            source: '/images/art/FEIV03UaUAAJqe4.jpg',
+            source: '/images/art/art_3.jpg',
           },
           {
-            source: '/images/art/FF7II5JVQAM1ILt.jpg',
+            source: '/images/art/art_4.jpg',
+          },
+          {
+            source: '/images/art/art_5.jpg',
           },
         ]}
         onTransitionEnd={() => RandAnims()}

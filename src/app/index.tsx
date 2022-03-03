@@ -26,20 +26,26 @@ export function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
-        htmlAttributes={{ lang: i18n.language }}
-      >
-        <meta name="description" content="A React Boilerplate application" />
-      </Helmet>
+    <div id="App">
+      <BrowserRouter>
+        <Helmet
+          titleTemplate="%s - React Boilerplate"
+          defaultTitle="React Boilerplate"
+          htmlAttributes={{ lang: i18n.language }}
+        >
+          <meta name="description" content="A React Boilerplate application" />
+        </Helmet>
 
-      <Switch>
-        <Route exact path={process.env.PUBLIC_URL + '/'} component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-      <GlobalStyle />
-    </BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + '/'}
+            component={HomePage}
+          />
+          <Route component={NotFoundPage} />
+        </Switch>
+        <GlobalStyle />
+      </BrowserRouter>
+    </div>
   );
 }
