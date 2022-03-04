@@ -18,7 +18,7 @@ const NavigationSlider = withAutoplay(withNavigationHandlers(AwesomeSlider));
 
 export default withNavigationContext(({ fullpage }) => {
   const [anim, setAnim] = useState(`foldOutAnimation`);
-  const [arts, setArts] = useState([]);
+  // const [arts, setArts] = useState([]);
   useEffect(() => {
     const fetchArt = async () => {
       const media = await axios.get('/media');

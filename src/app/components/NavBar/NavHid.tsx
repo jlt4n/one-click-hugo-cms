@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { WrapperNavHid } from '../Wrappers';
 
@@ -34,6 +34,17 @@ const UlContent = styled.ul`
   padding: 2.5rem 0 0 0.5rem;
 `;
 
+let users = [];
+
+const fetchUsers = async () =>
+  await (await fetch('/.netlify/functions/getusers')).json();
+//await (await fetch('http://localhost:9000/getusers')).json();
+
+fetchUsers().then(data => {
+  console.log(data);
+  users = data;
+});
+
 const NavHid: React.FC<{ navStat?: boolean }> = ({ navStat = false }) => {
   const [animEnd, setAnimEnd] = useState(false);
 
@@ -52,12 +63,13 @@ const NavHid: React.FC<{ navStat?: boolean }> = ({ navStat = false }) => {
           >
             <Heading>「Featured Images」</Heading>
             <UlContent>
-              <li>Coffee</li>
-              <li>Tea</li>
-              <li>Milk</li>
-              <li>Coffee</li>
-              <li>Tea</li>
-              <li>Milk</li>
+              {users.map(user => {
+                return (
+                  <li>
+                    <a href={user['url']}>{user['login']}</a>
+                  </li>
+                );
+              })}
             </UlContent>
           </NavHidContent>
         )}

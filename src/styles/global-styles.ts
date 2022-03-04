@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { StyleConstants } from './StyleConstants';
-import { animated, useTransition } from 'react-spring';
+import { animated } from 'react-spring';
 // import { styled } from 'styled-components/macro';
 /* istanbul ignore next */
 export const GlobalStyle = createGlobalStyle`
