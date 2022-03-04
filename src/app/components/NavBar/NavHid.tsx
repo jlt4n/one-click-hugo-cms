@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { WrapperNavHid } from '../Wrappers';
 
@@ -14,44 +14,63 @@ const NavHidBG = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 1.7rem;
-  font-weight: 750;
+  position: absolute;
+  font-size: 1.4rem;
+  font-weight: 992;
   text-transform: uppercase;
+  white-space: nowrap;
+  left: -0.7rem;
 `;
 
 const NavHidContent = styled.div`
   opacity: 1 !important;
   position: relative;
-  z-index: 998;
+  z-index: 2;
   color: white;
-  text-shadow: 3px 3px 3px black;
+  // text-shadow: 3px 3px 3px black;
 `;
+
+const UlContent = styled.ul`
+  padding: 2.5rem 0 0 0.5rem;
+`;
+
+let users = [];
+
+const fetchUsers = async () =>
+  await (await fetch('/.netlify/functions/getusers')).json();
+//await (await fetch('http://localhost:9000/getusers')).json();
+
+fetchUsers().then(data => {
+  console.log(data);
+  users = data;
+});
 
 const NavHid: React.FC<{ navStat?: boolean }> = ({ navStat = false }) => {
   const [animEnd, setAnimEnd] = useState(false);
 
-  useEffect(() => {
-    if (!navStat) {
-      setAnimEnd(false);
-    }
-  }, [navStat]);
+  // useEffect(() => {
+  //   if (!navStat) {
+  //     setAnimEnd(false);
+  //   }
+  // }, [navStat]);
 
   return (
     <>
       <WrapperNavHid>
         {animEnd && (
           <NavHidContent
-            className={`${navStat ? 'flicker-in' : 'pre-flicker-in'}`}
+            className={`${navStat ? 'flicker-in' : 'pre-flicker-in'} text-glow`}
           >
-            <Heading>Featured Images</Heading>
-            <ul>
-              <li>Coffee</li>
-              <li>Tea</li>
-              <li>Milk</li>
-              <li>Coffee</li>
-              <li>Tea</li>
-              <li>Milk</li>
-            </ul>
+            <Heading>「Featured Images」</Heading>
+            <UlContent>
+              {users.map(user => {
+                return (
+                  <li>
+                    <a href={user['url']}>{user['login']}</a>
+                  </li>
+                );
+              })}
+            </UlContent>
           </NavHidContent>
         )}
         <NavHidBG

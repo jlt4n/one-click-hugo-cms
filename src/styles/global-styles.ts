@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { StyleConstants } from './StyleConstants';
+import { animated } from 'react-spring';
 // import { styled } from 'styled-components/macro';
 /* istanbul ignore next */
 export const GlobalStyle = createGlobalStyle`
@@ -39,6 +40,10 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const Flex = styled.div`
+  display: flex;
+`;
+
+export const AnimFlex = styled(animated.div)`
   display: flex;
 `;
 

@@ -5,21 +5,21 @@ import Marquee from 'react-fast-marquee';
 
 const Text = styled.p`
   letter-spacing: 3px;
-  font-weight: 1000;
+  font-weight: 800;
 `;
 
 const TextScroller: React.FC = () => {
   return (
     <>
-      <WrapperTxtScroller className="crt">
-        <div className="text-glow marquee-force-visible">
+      <WrapperTxtScroller>
+        <div className="text-shadow marquee-force-visible">
           <Marquee
             gradient={false}
             speed={2}
             pauseOnHover={true}
             direction="right"
           >
-            <Text>
+            <Text className="reflect">
               TextScroller - TextScroller - TextScroller - TextScroller -
               TextScroller - TextScroller -TextScroller
             </Text>

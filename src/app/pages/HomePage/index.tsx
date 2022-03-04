@@ -7,14 +7,25 @@ import {
   WrapperContent,
   WrapperZNdx,
 } from 'app/components/Wrappers';
-import * as Styles from '../../../styles/global-styles';
+import * as styl from '../../../styles/global-styles';
 import TextScroller from '../../components/TextScroller';
 import { NavBtn } from '../../components/Buttons/Buttons';
 import NavHid from 'app/components/NavBar/NavHid';
+import { useSpring } from 'react-spring';
 
 export function HomePage() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [navStat, setNavStat] = useState(false);
+  const animNav = useSpring({
+    transform: isNavOpen ? 'translateX(18rem)' : 'translateX(0rem)',
+    zIndex: 999,
+    onRest: () => {
+      if (isNavOpen) {
+        setNavStat(true);
+      }
+    },
+  });
+  // TODO: Make states efficient in refactor;
   return (
     <>
       <Helmet>
@@ -26,31 +37,36 @@ export function HomePage() {
       </Helmet>
       {/* <NavBar /> */}
       <WrapperPage>
-        <Styles.Flex>
-          <Styles.ShadowBox>
+        <styl.Flex>
+          <styl.ShadowBox>
             <Nav />
-          </Styles.ShadowBox>
-          <Styles.Flex
+          </styl.ShadowBox>
+          <styl.AnimFlex
             id="opening"
-            className={isNavOpen ? 'navOpen' : 'navClose'}
-            onAnimationEnd={() => setNavStat(isNavOpen)}
+            style={animNav}
+            // className={isNavOpen ? 'navOpen' : 'navClose'}
+            // onAnimationEnd={() => {
+            //   if (isNavOpen) {
+            //     setNavStat(true);
+            //   }
+            // }}
           >
             <NavHid navStat={navStat} />
-            <Styles.ShadowBox>
+            <styl.ShadowBox>
               <TextScroller />
-            </Styles.ShadowBox>
+            </styl.ShadowBox>
             <WrapperZNdx>
               <div onClick={() => setIsNavOpen(!isNavOpen)}>
                 <NavBtn />
               </div>
             </WrapperZNdx>
-          </Styles.Flex>
+          </styl.AnimFlex>
           <WrapperContent>
-            <Styles.BGSlider>
+            <styl.BGSlider>
               <ShowcaseArt />
-            </Styles.BGSlider>
+            </styl.BGSlider>
           </WrapperContent>
-        </Styles.Flex>
+        </styl.Flex>
       </WrapperPage>
     </>
   );

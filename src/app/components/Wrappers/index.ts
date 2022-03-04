@@ -30,6 +30,47 @@ export const WrapperNavHid = styled.div`
   height: 100vh;
   transform: translateX(-100%);
   padding: 1rem 0.5rem 1rem 3rem;
+
+  &:after {
+    content: ' ';
+    display: block;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    /* animation: flicker 0.15s infinite; */
+  }
+
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.06)
+      );
+    z-index: 3;
+    opacity: 0.6;
+    background-size: auto 4px, 3px auto;
+    pointer-events: none;
+  }
 `;
 
 export const WrapperTxtScroller = styled.div`

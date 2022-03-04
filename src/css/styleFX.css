@@ -11,6 +11,20 @@ body.preload * {
     0 0 8px #03bcf4, 0 0 10px #03bcf4;
 }
 
+.text-shadow {
+  color: #fff;
+  /* -webkit-text-shadow: -1px -1px #3e3e3e, -2px -2px #3e3e3e, -3px -3px #3e3e3e;
+  text-shadow: -1px -1px #3e3e3e, -2px -2px #3e3e3e, -3px -3px #3e3e3e; */
+  -webkit-filter: drop-shadow(-0.5px -0.5px #3e3e3e)
+    drop-shadow(-1px -1px #3e3e3e) drop-shadow(-1.5px -1.5px #3e3e3e);
+  filter: drop-shadow(-0.5px -0.5px #3e3e3e) drop-shadow(-1px -1px #3e3e3e)
+    drop-shadow(-1.5px -1.5px #3e3e3e);
+}
+
+.reflect {
+  -webkit-box-reflect: below 1px linear-gradient(transparent 20%, #0008);
+}
+
 .text-glowAnim {
   -webkit-box-reflect: below 1px linear-gradient(transparent 20%, #0008);
   outline: none;
@@ -271,7 +285,7 @@ body.preload * {
 }
 
 .navOpen {
-  animation: navOpening 0.5s ease-out both;
+  animation: navOpening 0.4s ease-out both;
 }
 
 @keyframes navOpening {
@@ -286,7 +300,7 @@ body.preload * {
 }
 
 .navClose {
-  animation: navClosing 0.5s ease-in both;
+  animation: navClosing 0.3s ease-in both;
 }
 
 @keyframes navClosing {
@@ -304,8 +318,8 @@ body.preload * {
 }
 
 .flicker-in {
-  -webkit-animation: flicker-in-1 0.5s linear both;
-  animation: flicker-in-1 0.5s linear both;
+  -webkit-animation: flicker-in-1 0.3s linear both;
+  animation: flicker-in-1 0.3s linear both;
 }
 
 @-webkit-keyframes flicker-in-1 {
@@ -528,4 +542,9 @@ body.preload * {
     -webkit-transform: scale(1) translateX(-100%);
     transform: scale(1) translateX(-100%);
   }
+}
+
+.inset-shadow {
+  -webkit-box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.5);
 }
